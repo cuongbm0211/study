@@ -22,7 +22,8 @@ public class Main {
         user.setUsername("johndoe");
         user.setName("John Doe");
 
-        outerBean.testRequired(user);
+//        outerBean.testRequired(user);
+        outerBean.testRequiresNew(user);
 
 
 

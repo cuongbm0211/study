@@ -29,7 +29,14 @@ public class OuterBeanImpl implements OuterBean {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public void testRequiresNew(User user) {
+        userDAO.insertUser(user);
 
+        try {
+            innerBean.testRequiresNew();
+        } catch (Exception e) {
+            // Ignore exception
+        }
     }
 }

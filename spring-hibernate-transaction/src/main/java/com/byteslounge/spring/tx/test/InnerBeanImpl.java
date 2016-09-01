@@ -17,7 +17,8 @@ public class InnerBeanImpl implements  InnerBean {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void testRequiresNew() {
-
+        throw new RuntimeException("Roll back this transaction!");
     }
 }
