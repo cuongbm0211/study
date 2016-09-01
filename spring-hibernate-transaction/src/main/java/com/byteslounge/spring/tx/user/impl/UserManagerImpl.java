@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.byteslounge.spring.tx.dao.UserDAO;
@@ -23,7 +24,7 @@ public class UserManagerImpl implements UserManager {
     }
 
     @Override
-    @Transactional
+    @Transactional(propagation= Propagation.REQUIRED)
     public User getUserById(int userId) {
         userDAO.getUserById(userId);
         userDAO.getUserById(userId);
@@ -37,13 +38,13 @@ public class UserManagerImpl implements UserManager {
     }
 
     @Override
-    @Transactional
+    @Transactional(propagation=Propagation.REQUIRED)
     public User getUser(String username) {
         return userDAO.getUser(username);
     }
 
     @Override
-    @Transactional
+    @Transactional(propagation=Propagation.REQUIRED)
     public List<User> getUsers() {
         return userDAO.getUsers();
     }
