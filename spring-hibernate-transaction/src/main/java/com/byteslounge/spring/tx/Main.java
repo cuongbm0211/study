@@ -23,7 +23,8 @@ public class Main {
         user.setName("John Doe");
 
 //        outerBean.testRequired(user);
-        outerBean.testRequiresNew(user);
+//        outerBean.testRequiresNew(user);
+        outerBean.testRequiresMantory(user);
 
 
 
