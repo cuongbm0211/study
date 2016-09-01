@@ -44,6 +44,5 @@ public class OuterBeanImpl implements OuterBean {
     public void testRequiresMantory(User user) {
 //        userDAO.insertUser(user);
         innerBean.testMandatory();
-        System.out.println("abc");
     }
 }

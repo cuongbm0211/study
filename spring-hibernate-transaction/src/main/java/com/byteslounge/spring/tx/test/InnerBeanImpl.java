@@ -17,18 +17,19 @@ public class InnerBeanImpl implements  InnerBean {
     UserDAO userDAO;
 
     @Override
-//    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED)
     public void testRequired() {
         throw new RuntimeException("Roll back this transaction!");
     }
 
     @Override
-//    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void testRequiresNew() {
         throw new RuntimeException("Roll back this transaction!");
     }
 
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public void testMandatory() {
         User user = new User();
         user.setUsername("johndoe");
