@@ -12,6 +12,5 @@ public interface InnerBean {
 
     void testRequiresNew();
 
-    @Transactional(propagation = Propagation.MANDATORY)
     void testMandatory();
 }
