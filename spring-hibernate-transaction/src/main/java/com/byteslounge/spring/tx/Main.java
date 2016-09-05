@@ -2,34 +2,30 @@ package com.byteslounge.spring.tx;
 
 import java.util.List;
 
+import com.byteslounge.spring.tx.jms.JmsMessageSender;
 import com.byteslounge.spring.tx.test.OuterBean;
+import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.byteslounge.spring.tx.model.User;
 import com.byteslounge.spring.tx.user.UserManager;
 
+import javax.jms.Queue;
+
 public class Main {
     public static void main(String[] args) {
         ApplicationContext ctx =
                 new ClassPathXmlApplicationContext("spring.xml");
-        UserManager userManager =
-                (UserManager) ctx.getBean("userManagerImpl");
+        // get bean from context
+        JmsMessageSender jmsMessageSender = (JmsMessageSender)ctx.getBean("jmsMessageSender");
 
-        OuterBean outerBean = (OuterBean) ctx.getBean("outerBeanImpl");
+        // send to default destination
+        jmsMessageSender.send("hello JMS");
 
-        User user = new User();
-        user.setUsername("johndoe");
-        user.setName("John Doe");
-
-//        outerBean.testRequired(user);
-//        outerBean.testRequiresNew(user);
-//        outerBean.testRequiresMantory(user);
-//        outerBean.testNever(user);
-        outerBean.testSupports(user);
-
-
-
+        // send to a code specified destination
+        Queue queue = new ActiveMQQueue("AnotherDest");
+        jmsMessageSender.send(queue, "hello Another Message");
     }
 }
 
