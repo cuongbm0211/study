@@ -51,4 +51,11 @@ public class OuterBeanImpl implements OuterBean {
     public void testNever(User user) {
         innerBean.testNever();
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public void testSupports(User user) {
+        userDAO.insertUser(user);
+        innerBean.testSupports();
+    }
 }

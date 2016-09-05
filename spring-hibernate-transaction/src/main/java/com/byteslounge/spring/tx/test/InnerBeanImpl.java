@@ -45,4 +45,9 @@ public class InnerBeanImpl implements  InnerBean {
 
     }
 
+    @Override
+    public void testSupports() {
+        throw new RuntimeException("Roll back this transaction!");
+    }
+
 }
