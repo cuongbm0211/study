@@ -16,16 +16,17 @@
 
     <context:property-placeholder ignore-unresolvable="true" location="classpath:/hibernate.properties"/>
     <context:property-placeholder ignore-unresolvable="true" location="classpath:/jms.properties"/>
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:/datasource.properties"/>
 
     <tx:annotation-driven/>
     <context:component-scan
             base-package="com.byteslounge.spring.tx"/>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/test"/>
-        <property name="username" value="root"/>
-        <property name="password" value=""/>
+        <property name="driverClassName" value="${database.driver}"/>
+        <property name="url" value="${database.url}"/>
+        <property name="username" value="${database.username}"/>
+        <property name="password" value="${database.password}"/>
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -77,7 +78,7 @@
     </bean>
 
     <jms:listener-container container-type="default"
-                            concurrency="5" connection-factory="connectionFactory">
+                            concurrency="1" connection-factory="connectionFactory">
         <jms:listener destination="${jms.default.destination}" ref="messageListenerExample"/>
     </jms:listener-container>
 
