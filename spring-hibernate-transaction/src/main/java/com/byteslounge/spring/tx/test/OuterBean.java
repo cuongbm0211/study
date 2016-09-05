@@ -14,4 +14,7 @@ public interface OuterBean {
     void testRequiresNew(User user);
 
     void testRequiresMantory(User user);
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    void testNever(User user);
 }

@@ -39,4 +39,10 @@ public class InnerBeanImpl implements  InnerBean {
         System.out.println("abc");
     }
 
+    @Override
+    @Transactional(propagation = Propagation.NEVER)
+    public void testNever() {
+
+    }
+
 }

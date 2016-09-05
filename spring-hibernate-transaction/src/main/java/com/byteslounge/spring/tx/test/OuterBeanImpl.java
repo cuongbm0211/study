@@ -17,7 +17,7 @@ public class OuterBeanImpl implements OuterBean {
     @Autowired InnerBean innerBean;
 
     @Override
-//    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED)
     public void testRequired(User user) {
         userDAO.insertUser(user);
 
@@ -29,7 +29,7 @@ public class OuterBeanImpl implements OuterBean {
     }
 
     @Override
-//    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED)
     public void testRequiresNew(User user) {
         userDAO.insertUser(user);
 
@@ -44,5 +44,11 @@ public class OuterBeanImpl implements OuterBean {
     public void testRequiresMantory(User user) {
 //        userDAO.insertUser(user);
         innerBean.testMandatory();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void testNever(User user) {
+        innerBean.testNever();
     }
 }

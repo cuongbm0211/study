@@ -24,7 +24,8 @@ public class Main {
 
 //        outerBean.testRequired(user);
 //        outerBean.testRequiresNew(user);
-        outerBean.testRequiresMantory(user);
+//        outerBean.testRequiresMantory(user);
+        outerBean.testNever(user);
 
 
 

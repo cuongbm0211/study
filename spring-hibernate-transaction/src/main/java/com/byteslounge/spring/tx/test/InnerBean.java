@@ -13,4 +13,7 @@ public interface InnerBean {
     void testRequiresNew();
 
     void testMandatory();
+
+    @Transactional(propagation = Propagation.NEVER)
+    void testNever();
 }
