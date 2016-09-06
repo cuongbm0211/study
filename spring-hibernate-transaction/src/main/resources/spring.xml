@@ -27,6 +27,8 @@
         <property name="url" value="${database.url}"/>
         <property name="username" value="${database.username}"/>
         <property name="password" value="${database.password}"/>
+        <property name="maxActive" value="${database.maxconnections}"/>
+        <property name="initialSize" value="${database.initialsize}"/>
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
