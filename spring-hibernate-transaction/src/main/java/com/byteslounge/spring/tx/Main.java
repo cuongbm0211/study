@@ -14,7 +14,7 @@ public class Main {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
         ConfigurableEnvironment env = (ConfigurableEnvironment) ctx.getEnvironment();
         env.setDefaultProfiles("production");
-        ctx.load("conf/spring.xml");
+        ctx.load("spring.xml");
         ctx.refresh();
 
         // get bean from context

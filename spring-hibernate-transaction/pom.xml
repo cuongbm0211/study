@@ -113,6 +113,16 @@
     <build>
         <finalName>spring-hibernate-transaction</finalName>
 
+        <resources>
+            <resource>
+                <directory>src/main/resources/conf</directory>
+                <!--<excludes>-->
+                    <!--<exclude>*.properties</exclude>-->
+                <!--</excludes>-->
+                <!--<filtering>true</filtering>-->
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -130,7 +140,13 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <excludes>
-                        <exclude>**/conf/</exclude>
+                        <exclude>**/conf/**</exclude>
+                        <exclude>**/development/**</exclude>
+                        <exclude>**/production/**</exclude>
+                        <exclude>**/sql/**</exclude>
+                        <exclude>**/test/**</exclude>
+                        <exclude>**/log4j.properties</exclude>
+                        <exclude>**/spring.xml</exclude>
                     </excludes>
                     <archive>
                         <!-- Declare conf in classpath -->

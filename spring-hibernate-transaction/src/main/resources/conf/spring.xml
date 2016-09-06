@@ -85,21 +85,21 @@
     <!-- import different variables according to active profile -->
     <!-- ====================================================== -->
     <beans profile="development">
-        <context:property-placeholder ignore-unresolvable="true" location="classpath:/conf/development/hibernate.properties"/>
-        <context:property-placeholder ignore-unresolvable="true" location="classpath:/conf/development/jms.properties"/>
-        <context:property-placeholder ignore-unresolvable="true" location="classpath:/conf/development/datasource.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/development/hibernate.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/development/jms.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/development/datasource.properties"/>
     </beans>
 
     <beans profile="test">
-        <context:property-placeholder ignore-unresolvable="true" location="classpath:/conf/test/hibernate.properties"/>
-        <context:property-placeholder ignore-unresolvable="true" location="classpath:/conf/test/jms.properties"/>
-        <context:property-placeholder ignore-unresolvable="true" location="classpath:/conf/test/datasource.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/test/hibernate.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/test/jms.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/test/datasource.properties"/>
     </beans>
 
     <beans profile="production">
-        <context:property-placeholder ignore-unresolvable="true" location="classpath:/conf/production/hibernate.properties"/>
-        <context:property-placeholder ignore-unresolvable="true" location="classpath:/conf/production/jms.properties"/>
-        <context:property-placeholder ignore-unresolvable="true" location="classpath:/conf/production/datasource.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/production/hibernate.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/production/jms.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/production/datasource.properties"/>
     </beans>
 
 </beans>
