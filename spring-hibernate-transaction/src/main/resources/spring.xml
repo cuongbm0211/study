@@ -6,17 +6,13 @@
        xmlns:jms="http://www.springframework.org/schema/jms"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
                            http://www.springframework.org/schema/context
-                           http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                           http://www.springframework.org/schema/context/spring-context-4.0.xsd
                            http://www.springframework.org/schema/tx
                            http://www.springframework.org/schema/tx/spring-tx.xsd
                            http://www.springframework.org/schema/jms
                            http://www.springframework.org/schema/jms/spring-jms.xsd">
-
-    <context:property-placeholder ignore-unresolvable="true" location="classpath:/hibernate.properties"/>
-    <context:property-placeholder ignore-unresolvable="true" location="classpath:/jms.properties"/>
-    <context:property-placeholder ignore-unresolvable="true" location="classpath:/datasource.properties"/>
 
     <tx:annotation-driven/>
     <context:component-scan
@@ -29,6 +25,8 @@
         <property name="password" value="${database.password}"/>
         <property name="maxActive" value="${database.maxconnections}"/>
         <property name="initialSize" value="${database.initialsize}"/>
+        <property name="validationQuery" value="SELECT 1" />
+        <property name="testOnBorrow" value="true" />
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -83,5 +81,26 @@
                             concurrency="1" connection-factory="connectionFactory">
         <jms:listener destination="${jms.default.destination}" ref="messageListenerExample"/>
     </jms:listener-container>
+
+    <!-- ====================================================== -->
+    <!-- import different variables according to active profile -->
+    <!-- ====================================================== -->
+    <beans profile="development">
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/development/hibernate.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/development/jms.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/development/datasource.properties"/>
+    </beans>
+
+    <beans profile="test">
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/test/hibernate.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/test/jms.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/test/datasource.properties"/>
+    </beans>
+
+    <beans profile="production">
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/production/hibernate.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/production/jms.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/production/datasource.properties"/>
+    </beans>
 
 </beans>
