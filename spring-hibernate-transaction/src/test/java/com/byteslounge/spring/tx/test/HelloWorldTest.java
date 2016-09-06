@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Created by cuong.bui.manh on 9/6/2016.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:/spring.xml")
+@ContextConfiguration(locations = "classpath:/conf/spring.xml")
 @ActiveProfiles("development")
 public class HelloWorldTest {
 
