@@ -113,16 +113,6 @@
     <build>
         <finalName>spring-hibernate-transaction</finalName>
 
-        <!-- Set resource folder -->
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>src/main/resources/conf</directory>
-            </resource>
-        </resources>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -143,6 +133,11 @@
                         <exclude>**/conf/</exclude>
                     </excludes>
                     <archive>
+                        <!-- Declare conf in classpath -->
+                        <manifestEntries>
+                            <Class-Path>conf/</Class-Path>
+                        </manifestEntries>
+
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <mainClass>com.byteslounge.spring.tx.Main</mainClass>
