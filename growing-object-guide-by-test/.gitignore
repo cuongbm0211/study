@@ -1,0 +1,5 @@
+# IntelliJ
+growing-object-guide-by-test.iml
+
+# Maven ignore
+target/
