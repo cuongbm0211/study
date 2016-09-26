@@ -1,0 +1,5 @@
+# IntelliJ
+in28minutes-mockito-example-business.iml
+
+# Maven ignore
+target/

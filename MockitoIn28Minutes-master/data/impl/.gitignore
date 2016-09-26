@@ -1,0 +1,5 @@
+# IntelliJ
+spring-hibernate-transaction.iml
+
+# Maven ignore
+target/
