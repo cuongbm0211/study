@@ -18,6 +18,7 @@
         <hibernate.version>4.3.11.Final</hibernate.version>
         <slf4j-log4j12.version>1.7.2</slf4j-log4j12.version>
         <junit.version>4.12</junit.version>
+        <mockito-all.version>1.9.5</mockito-all.version>
     </properties>
 
     <dependencies>
@@ -95,6 +96,11 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>${mockito-all.version}</version>
         </dependency>
 
         <dependency>
