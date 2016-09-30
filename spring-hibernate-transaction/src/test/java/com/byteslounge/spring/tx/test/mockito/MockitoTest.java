@@ -2,17 +2,14 @@ package com.byteslounge.spring.tx.test.mockito;
 
 import com.byteslounge.spring.tx.dao.UserDAO;
 import com.byteslounge.spring.tx.model.User;
-import com.byteslounge.spring.tx.test.HelloWorld;
-import com.byteslounge.spring.tx.user.UserManager;
+import com.byteslounge.spring.tx.user.impl.UserManagerImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.when;
@@ -20,14 +17,12 @@ import static org.mockito.Mockito.when;
 /**
  * Created by cuong.bui.manh on 9/6/2016.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring.xml")
-@ActiveProfiles("development")
+@RunWith(MockitoJUnitRunner.class)
 public class MockitoTest {
     public static final int DUMMY_USER_ID = 9999;
 
-    @Autowired @InjectMocks
-    UserManager userManager;
+    @InjectMocks
+    UserManagerImpl userManager;
 
     @Mock
     UserDAO userDAO;
