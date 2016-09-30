@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <tx:annotation-driven/>
+    <context:component-scan base-package="com.byteslounge.spring.tx"/>
+
+    <!--Dummy Bean-->
+    <bean id="dataSource" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="org.apache.commons.dbcp.BasicDataSource" />
+    </bean>
+
+    <bean id="sessionFactory" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="org.hibernate.SessionFactory" />
+    </bean>
+
+    <bean id="transactionManager" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="org.springframework.orm.hibernate4.HibernateTransactionManager" />
+    </bean>
+
+    <bean id="amqConnectionFactory" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="org.apache.activemq.ActiveMQConnectionFactory" />
+    </bean>
+
+    <bean id="connectionFactory" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="org.springframework.jms.connection.CachingConnectionFactory" />
+    </bean>
+
+    <bean id="defaultDestination" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="org.apache.activemq.command.ActiveMQQueue" />
+    </bean>
+
+    <bean id="jmsTemplate" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="org.springframework.jms.core.JmsTemplate" />
+    </bean>
+
+</beans>
