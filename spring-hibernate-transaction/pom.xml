@@ -19,6 +19,7 @@
         <slf4j-log4j12.version>1.7.2</slf4j-log4j12.version>
         <junit.version>4.12</junit.version>
         <mockito-all.version>1.9.5</mockito-all.version>
+        <hsqldb.version>2.3.4</hsqldb.version>
     </properties>
 
     <dependencies>
@@ -71,6 +72,14 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.39</version>
         </dependency>
+
+        <!-- Embedded DB use for testing -->
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.hibernate</groupId>
