@@ -2,44 +2,98 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:jms="http://www.springframework.org/schema/jms"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context-4.0.xsd
                            http://www.springframework.org/schema/tx
-                           http://www.springframework.org/schema/tx/spring-tx.xsd">
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/jms
+                           http://www.springframework.org/schema/jms/spring-jms.xsd">
+
+    <import resource="db-hsqldb-config.xml"/>
 
     <tx:annotation-driven/>
     <context:component-scan base-package="com.byteslounge.spring.tx"/>
 
-    <!--Dummy Bean-->
-    <bean id="dataSource" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="org.apache.commons.dbcp.BasicDataSource" />
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.archive.autodetection">class,hbm</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</prop>
+                <prop key="hibernate.connection.username">sa</prop>
+                <prop key="hibernate.connection.password"></prop>
+                <prop key="hibernate.connection.url">jdbc:hsqldb:mem:dataSource</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
+            </props>
+        </property>
+        <property name="packagesToScan" value="com.byteslounge.spring.tx.model"/>
     </bean>
 
-    <bean id="sessionFactory" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="org.hibernate.SessionFactory" />
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager"
+          p:sessionFactory-ref="sessionFactory">
     </bean>
 
-    <bean id="transactionManager" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="org.springframework.orm.hibernate4.HibernateTransactionManager" />
+    <!-- =============================================== -->
+    <!-- JMS Common, Define JMS connectionFactory       -->
+    <!-- =============================================== -->
+    <!-- Activemq connection factory -->
+    <bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <!-- brokerURL, You may have different IP or port -->
+        <constructor-arg index="0" value="${jms.broker.url}"/>
     </bean>
 
-    <bean id="amqConnectionFactory" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="org.apache.activemq.ActiveMQConnectionFactory" />
+    <!-- Pooled Spring connection factory -->
+    <bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <constructor-arg ref="amqConnectionFactory"/>
     </bean>
 
-    <bean id="connectionFactory" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="org.springframework.jms.connection.CachingConnectionFactory" />
+    <!-- ======================================================= -->
+    <!-- JMS Send, define default destination and JmsTemplate    -->
+    <!-- ======================================================= -->
+    <!-- Default Destination Queue Definition -->
+    <bean id="defaultDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <!-- name of the queue -->
+        <constructor-arg index="0" value="${jms.default.destination}"/>
     </bean>
 
-    <bean id="defaultDestination" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="org.apache.activemq.command.ActiveMQQueue" />
+    <!-- JmsTemplate Definition -->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestination" ref="defaultDestination"/>
     </bean>
 
-    <bean id="jmsTemplate" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="org.springframework.jms.core.JmsTemplate" />
-    </bean>
+    <jms:listener-container container-type="default"
+                            concurrency="1" connection-factory="connectionFactory">
+        <jms:listener destination="${jms.default.destination}" ref="messageListenerExample"/>
+    </jms:listener-container>
+
+    <!-- ====================================================== -->
+    <!-- import different variables according to active profile -->
+    <!-- ====================================================== -->
+    <beans profile="development">
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/development/hibernate.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/development/jms.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/development/datasource.properties"/>
+    </beans>
+
+    <beans profile="test">
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/test/hibernate.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/test/jms.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/test/datasource.properties"/>
+    </beans>
+
+    <beans profile="production">
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/production/hibernate.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/production/jms.properties"/>
+        <context:property-placeholder ignore-unresolvable="true" location="classpath:/production/datasource.properties"/>
+    </beans>
 
 </beans>
