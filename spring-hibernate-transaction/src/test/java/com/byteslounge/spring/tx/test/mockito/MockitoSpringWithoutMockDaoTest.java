@@ -16,15 +16,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-test.xml")
 @ActiveProfiles("development")
-public class MockitoSpringTest {
+public class MockitoSpringWithoutMockDaoTest {
     public static final int DUMMY_USER_ID = 1;
 
     @Autowired
     UserManager userManager;
-
-//    @Mock
-//    @Autowired
-//    UserDAO userDAO;
 
     @Before
     public void setup() {
@@ -33,15 +29,7 @@ public class MockitoSpringTest {
 
     @Test
     public void testMockito() {
-//        User returnUser = new User();
-//        returnUser.setName("Cuong");
-//        when(userDAO.getUserById(anyInt())).thenReturn(returnUser);
-
         System.out.println(userManager.getUserById(DUMMY_USER_ID));
-        try {
-            Thread.sleep(100000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
+
 }

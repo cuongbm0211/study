@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "classpath:spring-test.xml" })
 @Transactional
-public class MockitoWithSpring {
+public class MockitoWithSpringMockDaoTest {
     public static final int DUMMY_USER_ID = 9999;
 
     @InjectMocks @Autowired
