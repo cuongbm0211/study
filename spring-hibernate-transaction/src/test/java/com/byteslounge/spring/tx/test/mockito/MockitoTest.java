@@ -12,8 +12,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Matchers.anyInt;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by cuong.bui.manh on 9/6/2016.
@@ -49,7 +48,15 @@ public class MockitoTest {
         mockResult.setName("Cuong");
         when(userDAO.getUserById(anyInt())).thenReturn(mockResult);
 
-        User result = userManager.getUserById(DUMMY_USER_ID);
+        userManager.getUserById(DUMMY_USER_ID);
         verify(userDAO).getUserById(DUMMY_USER_ID);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void should_throw_exception() {
+        User mockResult = new User();
+        mockResult.setName("Cuong");
+        doThrow(new RuntimeException("CuongException")).when(userDAO.getUserById(anyInt()));
+        userManager.getUserById(DUMMY_USER_ID);
     }
 }
