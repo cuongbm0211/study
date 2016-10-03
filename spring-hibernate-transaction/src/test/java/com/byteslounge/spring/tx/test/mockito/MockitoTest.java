@@ -59,4 +59,5 @@ public class MockitoTest {
         doThrow(new RuntimeException("CuongException")).when(userDAO.getUserById(anyInt()));
         userManager.getUserById(DUMMY_USER_ID);
     }
+
 }
