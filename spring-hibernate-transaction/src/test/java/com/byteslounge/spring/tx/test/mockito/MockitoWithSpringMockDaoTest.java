@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.mockito.Matchers.anyInt;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -38,12 +39,22 @@ public class MockitoWithSpringMockDaoTest {
     }
 
     @Test
-    public void should_say_hello() {
-        User userReturn = new User();
-        userReturn.setName("Cuong");
-        when(userDAO.getUserById(anyInt())).thenReturn(userReturn);
+    public void should_return_mock_result() {
+        User mockResult = new User();
+        mockResult.setName("Cuong");
+        when(userDAO.getUserById(anyInt())).thenReturn(mockResult);
 
         User result = userManager.getUserById(DUMMY_USER_ID);
         System.out.println(result);
+    }
+
+    @Test
+    public void should_call_method_userDao() {
+        User mockResult = new User();
+        mockResult.setName("Cuong");
+        when(userDAO.getUserById(anyInt())).thenReturn(mockResult);
+
+        User result = userManager.getUserById(DUMMY_USER_ID);
+        verify(userDAO).getUserById(DUMMY_USER_ID);
     }
 }

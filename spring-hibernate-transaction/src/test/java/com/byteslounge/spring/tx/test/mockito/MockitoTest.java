@@ -12,6 +12,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Matchers.anyInt;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -40,5 +41,15 @@ public class MockitoTest {
 
         User result = userManager.getUserById(DUMMY_USER_ID);
         System.out.println(result);
+    }
+
+    @Test
+    public void should_call_method_userDao() {
+        User mockResult = new User();
+        mockResult.setName("Cuong");
+        when(userDAO.getUserById(anyInt())).thenReturn(mockResult);
+
+        User result = userManager.getUserById(DUMMY_USER_ID);
+        verify(userDAO).getUserById(DUMMY_USER_ID);
     }
 }
