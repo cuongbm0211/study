@@ -1,0 +1,5 @@
+# IntelliJ
+camelHelloWorld.iml
+
+# Maven ignore
+target/
