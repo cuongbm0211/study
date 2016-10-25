@@ -1,0 +1,5 @@
+# IntelliJ
+analyze-log-file.iml
+
+# Maven ignore
+target/
