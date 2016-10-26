@@ -1,4 +1,4 @@
-package com.analyze.logfile;
+package com.analyze.logfile.mail;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;

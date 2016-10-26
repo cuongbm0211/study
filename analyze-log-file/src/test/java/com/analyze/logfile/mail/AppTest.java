@@ -1,4 +1,4 @@
-package com.analyze.logfile;
+package com.analyze.logfile.mail;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
