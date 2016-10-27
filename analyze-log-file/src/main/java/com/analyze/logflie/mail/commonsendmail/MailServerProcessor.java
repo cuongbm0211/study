@@ -1,4 +1,4 @@
-package com.analyze.logfile.mail;
+package com.analyze.logflie.mail.commonsendmail;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;

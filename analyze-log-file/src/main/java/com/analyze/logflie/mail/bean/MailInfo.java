@@ -1,4 +1,4 @@
-package com.analyze.logfile.mail;
+package com.analyze.logflie.mail.bean;
 
 /**
  * Created by cuong on 10/25/2016.

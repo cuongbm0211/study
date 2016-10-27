@@ -1,5 +1,6 @@
-package com.analyze.logfile.mail;
+package com.analyze.logflie.mail.commonsendmail;
 
+import com.analyze.logflie.mail.bean.MailInfo;
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import com.google.common.io.Files;
