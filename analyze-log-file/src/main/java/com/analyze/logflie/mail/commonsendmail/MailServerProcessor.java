@@ -1,5 +1,6 @@
 package com.analyze.logflie.mail.commonsendmail;
 
+import com.analyze.logfile.mail.util.LineUtil;
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import com.google.common.io.Files;
@@ -61,14 +62,16 @@ public class MailServerProcessor {
                 }
             }
 
-            if (isSendMailSuccess) {
-                System.out.println(email + ", code: " + code + ", time: " + sendDateFromCommonSendMail + ": OK");
-//                System.out.println(email + "/t" +": OK");
-            } else {
-                System.out.println(email + ", code: " + code + ", time: " + sendDateFromCommonSendMail + ": FAIL");
-//                System.out.println(email + "/t" + ": FAIL");
-            }
+            String dateSendFromPostfix = getDateSendFromPostfix(lineContains);
+
+            System.out.println(email + "\t" + code + "\t" + sendDateFromCommonSendMail + "\t" + isSendMailSuccess + "\t" + dateSendFromPostfix);
         }
+    }
+
+    private String getDateSendFromPostfix(List<String> lineContains) {
+        List<String> linesConttainsSmtp = LineUtil.getAllLineHaveValue(lineContains, email);
+        String time = linesConttainsSmtp.get(0).substring(7, 16);
+        return time;
     }
 
     private List<String> getCodeQualified(Date commonDate, List<String> dataFile, Set<String> allCodeWithMail) throws ParseException {
