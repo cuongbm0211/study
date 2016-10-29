@@ -1,0 +1,5 @@
+# IntelliJ
+data-structure-algorithm.iml
+
+# Maven ignore
+target/
