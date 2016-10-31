@@ -87,10 +87,6 @@ public abstract class AbstractAmsPorcessor {
         }
     }
 
-    public abstract String getStartTime();
-
-    public abstract String getEndTime();
-
     public String getStartRequestString() {
         return startRequestString;
     }

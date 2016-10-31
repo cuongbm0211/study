@@ -6,19 +6,12 @@ package com.analyze.logfile.ams.processor;
 public class AmsBoAdditionalInfoUpdateProcessor extends AbstractAmsPorcessor {
 
 
+
     public AmsBoAdditionalInfoUpdateProcessor(String filePath) {
         super(filePath);
         setStartRequestString("[start] handle AmsBoAdditionalInfoUpdateRequest, requestId: ");
         setEndRequestString("[end] handle AmsBoAdditionalInfoUpdateRequest, requestId: ");
         setRequestName(this.getClass().toString());
-    }
-
-    public String getStartTime() {
-        return null;
-    }
-
-    public String getEndTime() {
-        return null;
     }
 
     public static void main(String[] args) {

@@ -18,14 +18,6 @@ public class AmsCustomerAgreementNewsProcessor extends AbstractAmsPorcessor {
         setRequestName(this.getClass().toString());
     }
 
-    public String getStartTime() {
-        return null;
-    }
-
-    public String getEndTime() {
-        return null;
-    }
-
     @Override
     public void printResult() {
         int countStart = StringUtils.countMatches(fileContent, getStartRequestString());

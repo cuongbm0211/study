@@ -12,14 +12,6 @@ public class AmsCustomerModifySocialProcessor extends AbstractAmsPorcessor {
         setRequestName(this.getClass().toString());
     }
 
-    public String getStartTime() {
-        return null;
-    }
-
-    public String getEndTime() {
-        return null;
-    }
-
     public static void main(String[] args) {
         AmsCustomerModifySocialProcessor amsCustomerModifySocialProcessor = new AmsCustomerModifySocialProcessor("D:/Nextop/20 story/079 TRSPT-9700 Summary request traffic of AmsApi/summary-log/ams-api-controller.log.2016-09-01");
         amsCustomerModifySocialProcessor.printResult();
