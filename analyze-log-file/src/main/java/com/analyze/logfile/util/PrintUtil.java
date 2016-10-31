@@ -17,6 +17,6 @@ public class PrintUtil {
         DateTime endDateTime = formatter.parseDateTime(endTimeString);
         long diffInMillis = endDateTime.getMillis() - startDateTime.getMillis();
 
-        System.out.println(className + "\t" + startTimeString + "\t" + endTimeString + "\t" + diffInMillis);
+        System.out.println(className + "\t" + requestId + "\t" + startTimeString + "\t" + endTimeString + "\t" + diffInMillis);
     }
 }

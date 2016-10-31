@@ -1,4 +1,4 @@
-package com.analyze.logfile.ams;
+package com.analyze.logfile.ams.processor;
 
 import com.analyze.logfile.util.LineUtil;
 import com.analyze.logfile.util.PrintUtil;
@@ -59,8 +59,7 @@ public abstract class AbstractAmsPorcessor {
         int countEnd = StringUtils.countMatches(fileContent, getEndRequestString());
 
         if (countStart != countEnd) {
-            System.err.println(this.getClass().toString() + " countStart != countEnd");
-            return;
+            System.err.println(this.getClass().toString() + " countStart != countEnd, countStart: " + countStart + ", countEnd: " + countEnd);
         }
 
         List<String> startLines = LineUtil.getAllLineHaveValue(getFileContenInLines(), getStartRequestString());

@@ -1,12 +1,4 @@
-package com.analyze.logfile.ams;
-
-import com.analyze.logfile.util.LineUtil;
-import com.analyze.logfile.util.PrintUtil;
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+package com.analyze.logfile.ams.processor;
 
 /**
  * Created by cuong on 10/31/2016.

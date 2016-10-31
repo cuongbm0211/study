@@ -1,4 +1,4 @@
-package com.analyze.logfile.ams;
+package com.analyze.logfile.ams.processor;
 
 import com.analyze.logfile.util.LineUtil;
 import com.analyze.logfile.util.PrintUtil;
