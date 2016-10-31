@@ -1,6 +1,6 @@
 package com.analyze.logflie.mail.commonsendmail;
 
-import com.analyze.logfile.mail.util.LineUtil;
+import com.analyze.logfile.util.LineUtil;
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import com.google.common.io.Files;

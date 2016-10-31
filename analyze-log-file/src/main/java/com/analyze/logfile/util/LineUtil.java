@@ -1,4 +1,4 @@
-package com.analyze.logfile.mail.util;
+package com.analyze.logfile.util;
 
 import java.util.ArrayList;
 import java.util.List;

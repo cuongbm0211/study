@@ -1,6 +1,6 @@
 package com.analyze.logflie.mail.plmail;
 
-import com.analyze.logfile.mail.util.LineUtil;
+import com.analyze.logfile.util.LineUtil;
 import com.analyze.logflie.mail.bean.MailInfo;
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;

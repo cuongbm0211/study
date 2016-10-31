@@ -14,8 +14,8 @@ import java.util.List;
  *
  */
 public class AmsProcessor {
-    private static final String folderContainsLogFile = "D:/Nextop/20 story/079 TRSPT-9700 Summary request traffic of AmsApi/AMS_API_CONTROLLER.20160903/opt/sc_app/logs/ams-api-controller/";
-    private static final String filePath = folderContainsLogFile + "ams-api-controller.log.2016-08-19";
+    private static final String folderContainsLogFile = "D:/Nextop/20 story/079 TRSPT-9700 Summary request traffic of AmsApi/summary-log/";
+    private static final String filePath = folderContainsLogFile + "ams-api-controller.log.2016-09-01";
 
     List<AmsRequest> amsRequests = Lists.newArrayList();
 
@@ -24,7 +24,10 @@ public class AmsProcessor {
             File[] logFiles = new File(folderContainsLogFile).listFiles();
 
             String logContent = Files.toString(new File(filePath), Charsets.UTF_8);
-            int count = StringUtils.countMatches(logContent, "[start] handle AmsCustomerAgreementNewsRequest");
+            int countStart = StringUtils.countMatches(logContent, "[start] handle AmsCustomerAgreementNewsRequest");
+            int countEnd = StringUtils.countMatches(logContent, "[end] handle AmsCustomerAgreementNewsRequest, requestId: ");
+            System.out.println(countStart + "   " + countEnd);
+            // String requestId = ; Don't have requestID, get end
 
             System.out.println("abc");
 
@@ -136,46 +139,15 @@ public class AmsProcessor {
         amsTransferRequest.setEndRequestString("[end] handle AmsTransferRequest, requestId: ");
         amsRequests.add(amsTransferRequest);
 
+        AmsRequest amsWithdrawalCancelRequest = new AmsRequest();
+        amsWithdrawalCancelRequest.setStartRequestString("[start] handle AmsWithdrawalCancelRequest, requestId: ");
+        amsWithdrawalCancelRequest.setEndRequestString("[end] handle AmsWithdrawalCancelRequest, requestId: ");
+        amsRequests.add(amsWithdrawalCancelRequest);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        AmsRequest amsWithdrawalRequest = new AmsRequest();
+        amsWithdrawalRequest.setStartRequestString("[start] handle AmsWithdrawalRequest, requestId: ");
+        amsWithdrawalRequest.setEndRequestString("[end] handle AmsWithdrawalRequest, requestId: ");
+        amsRequests.add(amsWithdrawalRequest);
 
     }
 }
