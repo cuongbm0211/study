@@ -3,7 +3,7 @@ package com.analyze.logfile.ams.processor;
 /**
  * Created by cuong on 10/31/2016.
  */
-public class AmsDepositProcessor extends AbstractAmsPorcessor {
+public class AmsDepositProcessor extends AbstractAmsProcessor {
 
     public AmsDepositProcessor() {
         super();

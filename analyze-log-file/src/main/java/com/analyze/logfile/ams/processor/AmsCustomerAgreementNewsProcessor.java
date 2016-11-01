@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by cuong on 10/31/2016.
  */
-public class AmsCustomerAgreementNewsProcessor extends AbstractAmsPorcessor {
+public class AmsCustomerAgreementNewsProcessor extends AbstractAmsProcessor {
 
     public AmsCustomerAgreementNewsProcessor() {
         super();
@@ -32,6 +32,7 @@ public class AmsCustomerAgreementNewsProcessor extends AbstractAmsPorcessor {
 
         if (countStart != countEnd) {
             System.err.println("AmsCustomerAgreementNewsProcessor countStart != countEnd");
+            PrintUtil.printToFile("ERROR" + "AmsCustomerAgreementNewsProcessor countStart != countEnd");
             return;
         }
 

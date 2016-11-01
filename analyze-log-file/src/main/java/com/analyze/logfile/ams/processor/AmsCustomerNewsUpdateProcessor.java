@@ -3,7 +3,7 @@ package com.analyze.logfile.ams.processor;
 /**
  * Created by cuong on 10/31/2016.
  */
-public class AmsCustomerNewsUpdateProcessor extends AbstractAmsPorcessor {
+public class AmsCustomerNewsUpdateProcessor extends AbstractAmsProcessor {
 
     public AmsCustomerNewsUpdateProcessor() {
         super();

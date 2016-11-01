@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * Created by cuong on 10/31/2016.
  */
-public abstract class AbstractAmsPorcessor {
+public abstract class AbstractAmsProcessor {
     private String filePath;
     protected String fileContent;
     protected List<String> fileContenInLines;
@@ -28,12 +28,12 @@ public abstract class AbstractAmsPorcessor {
     protected String startRequestString;
     protected String endRequestString;
 
-    public AbstractAmsPorcessor(String filePath) {
+    public AbstractAmsProcessor(String filePath) {
         this.filePath = filePath;
         reloadData();
     }
 
-    public AbstractAmsPorcessor() {
+    public AbstractAmsProcessor() {
 
     }
 
@@ -79,8 +79,10 @@ public abstract class AbstractAmsPorcessor {
             String startLine = startLines.get(i);
             String requestId = getIdStartLine(startLine);
             String endLine = mapToFind.get(requestId);
+
             if (endLine == null) {
                 System.err.println("Error on, requestId: " + requestId );
+                PrintUtil.printToFile("Error on, requestId: " + requestId);
                 continue;
             }
 
@@ -99,7 +101,7 @@ public abstract class AbstractAmsPorcessor {
         this.filePath = null;
         this.fileContent = null;
         this.fileContenInLines = null;
-        this.mapToFind = null;
+        this.mapToFind = new HashMap<String, String>();
     }
 
     public String getStartRequestString() {

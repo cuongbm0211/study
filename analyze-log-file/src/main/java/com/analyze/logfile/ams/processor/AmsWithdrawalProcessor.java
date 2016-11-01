@@ -3,7 +3,7 @@ package com.analyze.logfile.ams.processor;
 /**
  * Created by cuong on 10/31/2016.
  */
-public class AmsWithdrawalProcessor extends AbstractAmsPorcessor {
+public class AmsWithdrawalProcessor extends AbstractAmsProcessor {
 
     public AmsWithdrawalProcessor() {
         super();

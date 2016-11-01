@@ -1,15 +1,8 @@
 package com.analyze.logfile.ams;
 
-import com.analyze.logfile.ams.processor.AbstractAmsPorcessor;
-import com.analyze.logfile.ams.processor.AmsBoAdditionalInfoUpdateProcessor;
-import com.analyze.logfile.ams.processor.AmsCustomerAgreementNewsProcessor;
-import com.google.common.base.Charsets;
-import com.google.common.collect.Lists;
-import com.google.common.io.Files;
-import org.apache.commons.lang3.StringUtils;
+import com.analyze.logfile.ams.processor.AbstractAmsProcessor;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,32 +16,63 @@ public class AmsProcessor {
     public static void main(String[] args) {
         try {
             File[] logFiles = new File(folderContainsLogFile).listFiles();
-            List<AbstractAmsPorcessor> amsPorcessors = getProcessor();
+            List<String> amsProcessorsClassNames = getProcessorClassName();
 
-            for (AbstractAmsPorcessor amsPorcessor : amsPorcessors) {
+            for (String amsProcessorsClassName : amsProcessorsClassNames) {
                 for (File logFile : logFiles) {
-                    amsPorcessor.setFilePath(logFile.getPath());
-                    amsPorcessor.reloadData();
-                    amsPorcessor.printResult();
-                }
-                amsPorcessor = null;
-            }
+//                    System.out.println(logFile.getPath());
 
+                    // Not good for memory
+//                    amsPorcessor.setFilePath(logFile.getPath());
+//                    amsPorcessor.reloadData();
+//                    amsPorcessor.printResult();
+//                    amsPorcessor.clearMemory();
+
+                    // Other
+//                    AbstractAmsProcessor newProcessor = new AmsBoAdditionalInfoUpdateProcessor();
+//                    newProcessor.setFilePath(logFile.getPath());
+//                    newProcessor.reloadData();
+//                    newProcessor.printResult();
+//                    newProcessor.clearMemory();
+
+                    Class c = Class.forName(amsProcessorsClassName);
+
+                    AbstractAmsProcessor newProcessor = (AbstractAmsProcessor) c.newInstance();
+                    newProcessor.setFilePath(logFile.getPath());
+                    newProcessor.reloadData();
+                    newProcessor.printResult();
+                    newProcessor.clearMemory();
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    private static List<AbstractAmsPorcessor> getProcessor() {
-        List<AbstractAmsPorcessor> amsPorcessors = new ArrayList<AbstractAmsPorcessor>();
-
-        AbstractAmsPorcessor amsBoAdditionalInfoUpdateProcessor = new AmsBoAdditionalInfoUpdateProcessor();
-        amsPorcessors.add(amsBoAdditionalInfoUpdateProcessor);
-
-        AbstractAmsPorcessor amsCustomerAgreementNewsProcessor = new AmsCustomerAgreementNewsProcessor();
-        amsPorcessors.add(amsBoAdditionalInfoUpdateProcessor);
-
-        return amsPorcessors;
+    private static List<String> getProcessorClassName() {
+        List<String> amsProcessorsClassNames = new ArrayList<String>();
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsBoAdditionalInfoUpdateProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsCustomerAgreementNewsProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsCustomerBalanceProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsCustomerBoTestUpdateProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsCustomerCloseSocialProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsCustomerInfoProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsCustomerInfoUpdateProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsCustomerModifySocialProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsCustomerNewsProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsCustomerNewsReloadCacheProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsCustomerNewsUpdateProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsCustomerPaymentInfoProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsCustomerPaymentUpdateProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsCustomerRegisterSocialProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsCustomerReportsProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsDepositProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsDepositUpdateProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsTransferProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsTransferSocialProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsWithdrawalCancelProcessor");
+        amsProcessorsClassNames.add("com.analyze.logfile.ams.processor.AmsWithdrawalProcessor");
+        return amsProcessorsClassNames;
     }
 }
