@@ -5,6 +5,13 @@ package com.analyze.logfile.ams.processor;
  */
 public class AmsCustomerInfoUpdateProcessor extends AbstractAmsPorcessor {
 
+    public AmsCustomerInfoUpdateProcessor() {
+        super();
+        setStartRequestString("[start] handle AmsCustomerInfoUpdateRequest, requestId: ");
+        setEndRequestString("[end] handle AmsCustomerInfoUpdateRequest, requestId: ");
+        setRequestName(this.getClass().toString());
+    }
+
     public AmsCustomerInfoUpdateProcessor(String filePath) {
         super(filePath);
         setStartRequestString("[start] handle AmsCustomerInfoUpdateRequest, requestId: ");

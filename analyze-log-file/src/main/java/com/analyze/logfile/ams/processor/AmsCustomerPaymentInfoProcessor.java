@@ -5,6 +5,12 @@ package com.analyze.logfile.ams.processor;
  */
 public class AmsCustomerPaymentInfoProcessor extends AbstractAmsPorcessor {
 
+    public AmsCustomerPaymentInfoProcessor() {
+        super();
+        setStartRequestString("[start] handle AmsCustomerPaymentInfoRequest, requestId: ");
+        setEndRequestString("[end] handle AmsCustomerPaymentInfoRequest, requestId: ");
+        setRequestName(this.getClass().toString());
+    }
 
     public AmsCustomerPaymentInfoProcessor(String filePath) {
         super(filePath);

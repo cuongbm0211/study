@@ -5,6 +5,12 @@ package com.analyze.logfile.ams.processor;
  */
 public class AmsCustomerCloseSocialProcessor extends AbstractAmsPorcessor {
 
+    public AmsCustomerCloseSocialProcessor() {
+        super();
+        setStartRequestString("[start] handle AmsCustomerCloseSocialRequest, requestId: ");
+        setEndRequestString("[end] handle AmsCustomerCloseSocialRequest, requestId: ");
+        setRequestName(this.getClass().toString());
+    }
 
     public AmsCustomerCloseSocialProcessor(String filePath) {
         super(filePath);

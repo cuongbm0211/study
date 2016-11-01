@@ -5,6 +5,12 @@ package com.analyze.logfile.ams.processor;
  */
 public class AmsTransferProcessor extends AbstractAmsPorcessor {
 
+    public AmsTransferProcessor() {
+        super();
+        setStartRequestString("[start] handle AmsTransferRequest, requestId: ");
+        setEndRequestString("[end] handle AmsTransferRequest, requestId: ");
+        setRequestName(this.getClass().toString());
+    }
 
     public AmsTransferProcessor(String filePath) {
         super(filePath);

@@ -6,6 +6,13 @@ package com.analyze.logfile.ams.processor;
 public class AmsCustomerBalanceProcessor extends AbstractAmsPorcessor {
 
 
+    public AmsCustomerBalanceProcessor() {
+        super();
+        setStartRequestString("[start] handle AmsCustomerBalanceRequest, requestId: ");
+        setEndRequestString("[end] handle AmsCustomerBalanceRequest, requestId: ");
+        setRequestName(this.getClass().toString());
+    }
+
     public AmsCustomerBalanceProcessor(String filePath) {
         super(filePath);
         setStartRequestString("[start] handle AmsCustomerBalanceRequest, requestId: ");

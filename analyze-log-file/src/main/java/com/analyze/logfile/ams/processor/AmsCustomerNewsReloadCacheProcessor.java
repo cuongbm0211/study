@@ -5,6 +5,13 @@ package com.analyze.logfile.ams.processor;
  */
 public class AmsCustomerNewsReloadCacheProcessor extends AbstractAmsPorcessor {
 
+    public AmsCustomerNewsReloadCacheProcessor() {
+        super();
+        setStartRequestString("[Start] handle AmsCustomerNewsReloadCacheTask, requestId: ");
+        setEndRequestString("[End] handle AmsCustomerNewsReloadCacheTask, requestId: ");
+        setRequestName(this.getClass().toString());
+    }
+
     public AmsCustomerNewsReloadCacheProcessor(String filePath) {
         super(filePath);
         setStartRequestString("[Start] handle AmsCustomerNewsReloadCacheTask, requestId: ");

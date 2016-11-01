@@ -5,6 +5,12 @@ package com.analyze.logfile.ams.processor;
  */
 public class AmsWithdrawalProcessor extends AbstractAmsPorcessor {
 
+    public AmsWithdrawalProcessor() {
+        super();
+        setStartRequestString("[start] handle AmsWithdrawalRequest, requestId: ");
+        setEndRequestString("[end] handle AmsWithdrawalRequest, requestId: ");
+        setRequestName(this.getClass().toString());
+    }
 
     public AmsWithdrawalProcessor(String filePath) {
         super(filePath);

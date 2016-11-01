@@ -5,7 +5,12 @@ package com.analyze.logfile.ams.processor;
  */
 public class AmsBoAdditionalInfoUpdateProcessor extends AbstractAmsPorcessor {
 
-
+    public AmsBoAdditionalInfoUpdateProcessor() {
+        super();
+        setStartRequestString("[start] handle AmsBoAdditionalInfoUpdateRequest, requestId: ");
+        setEndRequestString("[end] handle AmsBoAdditionalInfoUpdateRequest, requestId: ");
+        setRequestName(this.getClass().toString());
+    }
 
     public AmsBoAdditionalInfoUpdateProcessor(String filePath) {
         super(filePath);

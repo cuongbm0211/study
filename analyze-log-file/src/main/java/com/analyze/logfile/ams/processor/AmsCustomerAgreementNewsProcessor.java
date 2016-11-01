@@ -11,6 +11,13 @@ import java.util.List;
  */
 public class AmsCustomerAgreementNewsProcessor extends AbstractAmsPorcessor {
 
+    public AmsCustomerAgreementNewsProcessor() {
+        super();
+        setStartRequestString("[start] handle AmsCustomerAgreementNewsRequest ");
+        setEndRequestString("[end] handle AmsCustomerAgreementNewsRequest, requestId: ");
+        setRequestName(this.getClass().toString());
+    }
+
     public AmsCustomerAgreementNewsProcessor(String filePath) {
         super(filePath);
         setStartRequestString("[start] handle AmsCustomerAgreementNewsRequest ");

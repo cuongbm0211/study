@@ -30,6 +30,14 @@ public abstract class AbstractAmsPorcessor {
 
     public AbstractAmsPorcessor(String filePath) {
         this.filePath = filePath;
+        reloadData();
+    }
+
+    public AbstractAmsPorcessor() {
+
+    }
+
+    public void reloadData() {
         try {
             fileContent = Files.toString(new File(filePath), Charsets.UTF_8);
             fileContenInLines = Splitter.on("\n").splitToList(fileContent);
@@ -87,6 +95,13 @@ public abstract class AbstractAmsPorcessor {
         }
     }
 
+    public void clearMemory(){
+        this.filePath = null;
+        this.fileContent = null;
+        this.fileContenInLines = null;
+        this.mapToFind = null;
+    }
+
     public String getStartRequestString() {
         return startRequestString;
     }
@@ -134,4 +149,5 @@ public abstract class AbstractAmsPorcessor {
     public void setRequestName(String requestName) {
         this.requestName = requestName;
     }
+
 }

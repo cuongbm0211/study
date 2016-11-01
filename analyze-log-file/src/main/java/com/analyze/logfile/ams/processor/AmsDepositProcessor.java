@@ -5,6 +5,12 @@ package com.analyze.logfile.ams.processor;
  */
 public class AmsDepositProcessor extends AbstractAmsPorcessor {
 
+    public AmsDepositProcessor() {
+        super();
+        setStartRequestString("[start] handle AmsDepositRequest, requestId: ");
+        setEndRequestString("[end] handle AmsDepositRequest, requestId: ");
+        setRequestName(this.getClass().toString());
+    }
 
     public AmsDepositProcessor(String filePath) {
         super(filePath);
