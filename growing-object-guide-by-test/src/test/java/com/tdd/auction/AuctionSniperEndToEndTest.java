@@ -7,7 +7,7 @@ import org.junit.Test;
  */
 public class AuctionSniperEndToEndTest {
 
-    private static final FackeAuctionServer auction = new FackeAuctionServer("item-54321");
+    private static final FakeAuctionServer auction = new FakeAuctionServer("item-54321");
     private static final ApplicationRunner application = new ApplicationRunner();
 
     @Test
@@ -16,6 +16,6 @@ public class AuctionSniperEndToEndTest {
         application.startBiddingIn(auction);
         auction.hasReceiveJoinRequestFromSniper();
         auction.announceClosed();
-        application.showSniperHasLostAution();
+        application.showSniperHasLostAuction();
     }
 }
