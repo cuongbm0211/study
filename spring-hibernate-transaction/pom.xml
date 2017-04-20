@@ -5,7 +5,10 @@
     <groupId>com.spring.hibernate.transaction</groupId>
     <artifactId>spring-hibernate-transaction</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <modules>
+        <module>../study-quartz</module>
+    </modules>
+    <packaging>pom</packaging>
 
     <name>spring-hibernate-transaction</name>
     <url>http://maven.apache.org</url>

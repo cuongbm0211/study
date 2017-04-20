@@ -1,0 +1,5 @@
+# IntelliJ
+study-quartz.iml
+
+# Maven ignore
+target/
