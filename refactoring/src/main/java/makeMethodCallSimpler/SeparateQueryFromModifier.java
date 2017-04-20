@@ -1,0 +1,48 @@
+package makeMethodCallSimpler;
+
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Created by CuongBM on 4/20/2017.
+ */
+public class SeparateQueryFromModifier {
+
+    public static void main(String[] args) {
+        SeparateQueryFromModifier separateQueryFromModifier = new SeparateQueryFromModifier();
+
+        List<String> people = Arrays.asList("Don");
+        separateQueryFromModifier.checkSecurity(people);
+
+    }
+
+    public void checkSecurity(List<String> peoples) {
+        String miscreant = findMiscreant(peoples);
+        someLaterCode(miscreant);
+    }
+
+    private void someLaterCode(String miscreant) {
+        // Do something with miscreant
+        System.out.println("Add miscreant [" + miscreant + "] to DB for trace later");
+    }
+
+    private String findMiscreant(List<String> peoples) {
+        for (String person : peoples) {
+            if (person.equalsIgnoreCase("Don")) {
+                sendEmailAlert();
+                return person;
+            }
+
+            if (person.equalsIgnoreCase("John")) {
+                sendEmailAlert();
+                return person;
+            }
+
+        }
+        return null;
+    }
+
+    private void sendEmailAlert() {
+        System.out.println("Has miscreant person on system !!!");
+    }
+}
