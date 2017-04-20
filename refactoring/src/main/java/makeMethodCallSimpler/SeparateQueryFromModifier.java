@@ -8,14 +8,6 @@ import java.util.List;
  */
 public class SeparateQueryFromModifier {
 
-    public static void main(String[] args) {
-        SeparateQueryFromModifier separateQueryFromModifier = new SeparateQueryFromModifier();
-
-        List<String> people = Arrays.asList("Don");
-        separateQueryFromModifier.checkSecurity(people);
-
-    }
-
     public void checkSecurity(List<String> peoples) {
         String miscreant = findMiscreant(peoples);
         someLaterCode(miscreant);
