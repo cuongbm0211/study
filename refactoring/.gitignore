@@ -1,0 +1,5 @@
+# IntelliJ
+refactoring.iml
+
+# Maven ignore
+target/
