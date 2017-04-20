@@ -47,6 +47,20 @@ public class SeparateQueryFromModifier {
         return null;
     }
 
+    private String findPerson(List<String> people) {
+        for (String person : people) {
+            if (person.equalsIgnoreCase("Don")) {
+                return person;
+            }
+
+            if (person.equalsIgnoreCase("John")) {
+                return person;
+            }
+        }
+
+        return null;
+    }
+
     private void sendEmailAlert() {
         System.out.println("Has miscreant person on system !!!");
     }
