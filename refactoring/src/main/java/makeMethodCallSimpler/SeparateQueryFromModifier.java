@@ -19,16 +19,8 @@ public class SeparateQueryFromModifier {
     }
 
     private void sendMiscreantNotification(List<String> people) {
-        for (String person : people) {
-            if (person.equalsIgnoreCase("Don")) {
-                sendEmailAlert();
-                return;
-            }
-
-            if (person.equalsIgnoreCase("John")) {
-                sendEmailAlert();
-                return;
-            }
+        if (findMiscreant(people) != null) {
+            sendEmailAlert();
         }
     }
 
