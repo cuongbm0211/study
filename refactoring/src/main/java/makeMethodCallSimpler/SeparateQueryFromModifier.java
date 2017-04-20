@@ -8,7 +8,8 @@ import java.util.List;
 public class SeparateQueryFromModifier {
 
     public void checkSecurity(List<String> peoples) {
-        String miscreant = findMiscreant(peoples);
+        findMiscreant(peoples);
+        String miscreant = findPerson(peoples);
         someLaterCode(miscreant);
     }
 
@@ -31,20 +32,6 @@ public class SeparateQueryFromModifier {
 
         }
         return findPerson(people);
-    }
-
-    private String findPerson(List<String> people) {
-        for (String person : people) {
-            if (person.equalsIgnoreCase("Don")) {
-                return person;
-            }
-
-            if (person.equalsIgnoreCase("John")) {
-                return person;
-            }
-        }
-
-        return null;
     }
 
     private String findPerson(List<String> people) {
