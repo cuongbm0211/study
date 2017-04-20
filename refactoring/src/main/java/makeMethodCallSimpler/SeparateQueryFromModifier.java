@@ -1,6 +1,5 @@
 package makeMethodCallSimpler;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,19 +17,33 @@ public class SeparateQueryFromModifier {
         System.out.println("Add miscreant [" + miscreant + "] to DB for trace later");
     }
 
-    private String findMiscreant(List<String> peoples) {
-        for (String person : peoples) {
+    private String findMiscreant(List<String> people) {
+        for (String person : people) {
             if (person.equalsIgnoreCase("Don")) {
                 sendEmailAlert();
-                return person;
+                return findPerson(people);
             }
 
             if (person.equalsIgnoreCase("John")) {
                 sendEmailAlert();
-                return person;
+                return findPerson(people);
             }
 
         }
+        return findPerson(people);
+    }
+
+    private String findPerson(List<String> people) {
+        for (String person : people) {
+            if (person.equalsIgnoreCase("Don")) {
+                return person;
+            }
+
+            if (person.equalsIgnoreCase("John")) {
+                return person;
+            }
+        }
+
         return null;
     }
 
