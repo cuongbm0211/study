@@ -14,6 +14,10 @@ public class ParameterizeMethod {
         salary *= 1.1;
     }
 
+    public void raise(double percentage) {
+        salary *= (1 + percentage);
+    }
+
     public double getSalary() {
         return salary;
     }
