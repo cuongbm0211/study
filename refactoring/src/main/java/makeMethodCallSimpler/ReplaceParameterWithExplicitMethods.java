@@ -21,6 +21,18 @@ public class ReplaceParameterWithExplicitMethods {
             throw new RuntimeException("Unknown type: " + type);
         }
 
+        public static Employee createEngineer() {
+            return new Engineer();
+        }
+
+        public static Employee createSalesman() {
+            return new Salesman();
+        }
+
+        public static Employee createManager() {
+            return new Manager();
+        }
+
 
         public static class Engineer extends Employee {}
 
