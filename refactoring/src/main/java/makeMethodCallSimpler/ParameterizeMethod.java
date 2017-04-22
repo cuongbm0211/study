@@ -7,11 +7,11 @@ public class ParameterizeMethod {
     double salary = 100;
 
     public void fivePercentRaise() {
-        salary *= 1.05;
+        raise(0.05);
     }
 
     public void tenPercentRaise() {
-        salary *= 1.1;
+        raise(0.1);
     }
 
     public void raise(double percentage) {
