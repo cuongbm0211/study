@@ -12,11 +12,11 @@ public class ReplaceParameterWithExplicitMethods {
         public static Employee create(int type) {
             switch (type) {
                 case ENGINEER:
-                    return new Engineer();
+                    return createEngineer();
                 case SALESMAN:
-                    return new Salesman();
+                    return createSalesman();
                 case MANAGER:
-                    return new Manager();
+                    return createManager();
             }
             throw new RuntimeException("Unknown type: " + type);
         }
