@@ -20,7 +20,7 @@ public class PreserverWholeObject {
         private Range tempRange;
 
         public boolean isWithinRange(Range givenRange) {
-            return (givenRange.getLow() >= tempRange.getLow() && givenRange.getHigh() <= tempRange.getHigh());
+            return tempRange.isInclude(givenRange);
         }
 
         public void setTempRange(Range tempRange) {
@@ -31,6 +31,10 @@ public class PreserverWholeObject {
     static class Range {
         private int low;
         private int high;
+
+        public boolean isInclude(Range givenRange) {
+            return (givenRange.getLow() >= low && givenRange.getHigh() <= high);
+        }
 
         public int getLow() {
             return low;
