@@ -22,7 +22,7 @@ public class PreserverWholeObject {
         private Range tempRange;
 
         public boolean isWithinRange(int low, int high, Range givenRange) {
-            return (low >= tempRange.getLow() && high <= tempRange.getHigh());
+            return (givenRange.getLow() >= tempRange.getLow() && givenRange.getHigh() <= tempRange.getHigh());
         }
 
         public void setTempRange(Range tempRange) {
