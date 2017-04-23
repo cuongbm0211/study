@@ -10,7 +10,7 @@ public class PreserverWholeObject {
         public boolean withinPlan(HeatingPlan plan) {
             int low = tempRange.getLow();
             int high = tempRange.getHigh();
-            return plan.isWithinRange(low, high);
+            return plan.isWithinRange(low, high, tempRange);
         }
 
         public void setTempRange(Range tempRange) {
@@ -21,7 +21,7 @@ public class PreserverWholeObject {
     static class HeatingPlan {
         private Range tempRange;
 
-        public boolean isWithinRange(int low, int high) {
+        public boolean isWithinRange(int low, int high, Range givenRange) {
             return (low >= tempRange.getLow() && high <= tempRange.getHigh());
         }
 
