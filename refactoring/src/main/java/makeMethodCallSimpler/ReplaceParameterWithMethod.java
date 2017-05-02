@@ -8,9 +8,8 @@ public class ReplaceParameterWithMethod {
     private double itemPrice;
 
     public double getPrice() {
-        double basePrice = quantity * itemPrice;
-        double discountLevel = 1;
-        if (quantity > 100) discountLevel = 2;
+        double basePrice = getBasePrice();
+        double discountLevel = getDiscountPrice();
         double finalPrice = getDiscountPrice(basePrice, discountLevel);
         return finalPrice;
     }
@@ -20,6 +19,15 @@ public class ReplaceParameterWithMethod {
             return basePrice * 0.1;
         }
         return basePrice * 0.05;
+    }
+
+    private double getBasePrice() {
+        return quantity * itemPrice;
+    }
+
+    private double getDiscountPrice() {
+        if (quantity > 100) return  2;
+        return 1;
     }
 
     public int getQuantity() {
