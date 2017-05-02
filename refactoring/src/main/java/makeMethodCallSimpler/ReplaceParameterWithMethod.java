@@ -8,9 +8,7 @@ public class ReplaceParameterWithMethod {
     private double itemPrice;
 
     public double getPrice() {
-        double basePrice = getBasePrice();
-        double discountLevel = getDiscountPrice();
-        double finalPrice = getDiscountPrice(basePrice, discountLevel);
+        double finalPrice = getDiscountPrice(getBasePrice(), getDiscountPrice());
         return finalPrice;
     }
 
