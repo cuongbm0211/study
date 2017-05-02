@@ -8,15 +8,15 @@ public class ReplaceParameterWithMethod {
     private double itemPrice;
 
     public double getPrice() {
-        double finalPrice = getDiscountPrice(getBasePrice(), getDiscountPrice());
+        double finalPrice = getDiscountLevel();
         return finalPrice;
     }
 
-    private double getDiscountPrice(double basePrice, double discountLevel) {
-        if (discountLevel == 2) {
-            return basePrice * 0.1;
+    private double getDiscountLevel() {
+        if (getDiscountPrice() == 2) {
+            return getBasePrice() * 0.1;
         }
-        return basePrice * 0.05;
+        return getBasePrice() * 0.05;
     }
 
     private double getBasePrice() {
