@@ -1,7 +1,6 @@
 package makeMethodCallSimpler;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -19,6 +18,14 @@ public class IntroduceParameterObject {
                 }
             }
             return result;
+        }
+
+        public List<Entry> getEntries() {
+            return entries;
+        }
+
+        public void setEntries(List<Entry> entries) {
+            this.entries = entries;
         }
     }
 
