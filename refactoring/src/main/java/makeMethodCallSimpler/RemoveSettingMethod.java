@@ -7,6 +7,10 @@ public class RemoveSettingMethod {
     private String id;
 
     public RemoveSettingMethod(String id) {
+        initializeId(id);
+    }
+
+    private void initializeId(String id) {
         this.id = id;
     }
 
