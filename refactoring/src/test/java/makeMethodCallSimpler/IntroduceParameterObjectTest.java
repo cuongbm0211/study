@@ -1,6 +1,7 @@
 package makeMethodCallSimpler;
 
 import makeMethodCallSimpler.IntroduceParameterObject.Account;
+import makeMethodCallSimpler.IntroduceParameterObject.DateRange;
 import makeMethodCallSimpler.IntroduceParameterObject.Entry;
 import org.junit.Test;
 
@@ -60,7 +61,8 @@ public class IntroduceParameterObjectTest {
         // Then
         LocalDate beforeOneWeek = LocalDate.now().minus(1, WEEKS);
         LocalDate afterOneWeek = LocalDate.now().plus(1, WEEKS);
-        double flowBetween = account.getFlowBetween(beforeOneWeek, afterOneWeek);
+        DateRange givenDate = new DateRange(beforeOneWeek, afterOneWeek);
+        double flowBetween = account.getFlowBetween(beforeOneWeek, afterOneWeek, givenDate);
         assertEquals(300, flowBetween, DELTA);
 
     }
