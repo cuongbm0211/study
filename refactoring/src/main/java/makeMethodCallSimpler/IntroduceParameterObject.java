@@ -10,10 +10,10 @@ public class IntroduceParameterObject {
     static class Account {
         private List<Entry> entries;
 
-        public double getFlowBetween(LocalDate startDate, LocalDate endDate, DateRange givenDate) {
+        public double getFlowBetween(DateRange givenDate) {
             double result = 0;
             for (Entry entry : entries) {
-                if (startDate.isBefore(entry.getChargeDate()) && endDate.isAfter(entry.getChargeDate())) {
+                if (givenDate.getStartDate().isBefore(entry.getChargeDate()) && givenDate.getEndDate().isAfter(entry.getChargeDate())) {
                     result += entry.getValue();
                 }
             }
@@ -57,6 +57,14 @@ public class IntroduceParameterObject {
         public DateRange(LocalDate startDate, LocalDate endDate) {
             this.startDate = startDate;
             this.endDate = endDate;
+        }
+
+        public LocalDate getStartDate() {
+            return startDate;
+        }
+
+        public LocalDate getEndDate() {
+            return endDate;
         }
     }
 

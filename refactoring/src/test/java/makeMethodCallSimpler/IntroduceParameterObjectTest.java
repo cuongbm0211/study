@@ -62,7 +62,7 @@ public class IntroduceParameterObjectTest {
         LocalDate beforeOneWeek = LocalDate.now().minus(1, WEEKS);
         LocalDate afterOneWeek = LocalDate.now().plus(1, WEEKS);
         DateRange givenDate = new DateRange(beforeOneWeek, afterOneWeek);
-        double flowBetween = account.getFlowBetween(beforeOneWeek, afterOneWeek, givenDate);
+        double flowBetween = account.getFlowBetween(givenDate);
         assertEquals(300, flowBetween, DELTA);
 
     }
