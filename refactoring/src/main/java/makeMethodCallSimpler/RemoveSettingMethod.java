@@ -6,11 +6,11 @@ package makeMethodCallSimpler;
 public class RemoveSettingMethod {
     private String id;
 
-    public String getId() {
-        return id;
+    public RemoveSettingMethod(String id) {
+        this.id = id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getId() {
+        return id;
     }
 }
