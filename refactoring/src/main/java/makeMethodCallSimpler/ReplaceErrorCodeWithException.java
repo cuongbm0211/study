@@ -8,13 +8,12 @@ public class ReplaceErrorCodeWithException {
     static class Account {
         private double balance;
 
-        public int withdraw(double amount) {
+        public void withdraw(double amount) {
             if (amount < balance) {
-                return -1;
+                throw new IllegalArgumentException("Amount exceeds balance");
             }
 
             balance -= amount;
-            return 0;
         }
     }
 
