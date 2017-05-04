@@ -29,4 +29,20 @@ public class ReplaceConstructorWithFactoryMethod {
     static class Salesman extends Employee {}
 
     static class Manager extends Employee {}
+
+
+    static class Person {
+        public static Person createMale() {
+            return new Male();
+        }
+
+        public static Person createFemale() {
+            return new Female();
+        }
+    }
+
+    static class Male extends Person { }
+
+    static class Female extends Person { }
+
 }
