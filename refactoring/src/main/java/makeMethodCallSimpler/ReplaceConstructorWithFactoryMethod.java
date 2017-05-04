@@ -11,8 +11,22 @@ public class ReplaceConstructorWithFactoryMethod {
         public static final int SALESMAN = 1;
         public static final int MANAGER = 2;
 
-        public Employee(int type) {
-            this.type = type;
+        public static Employee create(int type) {
+            switch (type) {
+                case ENGINEER:
+                    return new Engineer();
+                case SALESMAN:
+                    return new Salesman();
+                case MANAGER:
+                    return new Manager();
+            }
+            throw new RuntimeException("Can't exist type: " + type);
         }
     }
+
+    static class Engineer extends Employee {}
+
+    static class Salesman extends Employee {}
+
+    static class Manager extends Employee {}
 }
