@@ -16,14 +16,22 @@ public class ReplaceExceptionWithTest {
 
     public Resource getResource() {
         Resource result = null;
-        try {
-            result = cache.get(KEY); // NullPointerException can throw from here
-            return result;
-        } catch (Exception e) {
+
+        if (cache == null) {
             cache = new HashMap<>();
             result = new WrapResource(result);
             cache.put(KEY, result);
             return result;
+        } else {
+            try {
+                result = cache.get(KEY); // NullPointerException can throw from here
+                return result;
+            } catch (Exception e) {
+                cache = new HashMap<>();
+                result = new WrapResource(result);
+                cache.put(KEY, result);
+                return result;
+            }
         }
     }
 }
