@@ -21,10 +21,10 @@ public class ReplaceExceptionWithTest {
             cache = new HashMap<>();
             result = new WrapResource(result);
             cache.put(KEY, result);
-            return result;
         } else {
             result = cache.get(KEY); // NullPointerException can throw from here
-            return result;
         }
+        
+        return result;
     }
 }
