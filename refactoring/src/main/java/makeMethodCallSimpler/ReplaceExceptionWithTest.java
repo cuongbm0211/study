@@ -23,15 +23,8 @@ public class ReplaceExceptionWithTest {
             cache.put(KEY, result);
             return result;
         } else {
-            try {
-                result = cache.get(KEY); // NullPointerException can throw from here
-                return result;
-            } catch (Exception e) {
-                cache = new HashMap<>();
-                result = new WrapResource(result);
-                cache.put(KEY, result);
-                return result;
-            }
+            result = cache.get(KEY); // NullPointerException can throw from here
+            return result;
         }
     }
 }
