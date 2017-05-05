@@ -10,11 +10,7 @@ public class ConsolidateConditionalExpression {
     private boolean isPartTime;
 
     public double getDisabilityAmount() {
-        if (seniority < 1)
-            return 0;
-        if (monthsDisable > 12)
-            return 0;
-        if (isPartTime)
+        if (seniority < 1 || monthsDisable > 12 || isPartTime)
             return 0;
 
         return ComputeDisabilityAmount();
