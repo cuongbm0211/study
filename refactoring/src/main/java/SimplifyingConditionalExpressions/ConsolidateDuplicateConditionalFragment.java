@@ -10,11 +10,11 @@ public class ConsolidateDuplicateConditionalFragment {
     private double price;
 
     public void calculateSomething() {
-        if (isSpecialDeal) {
+        if (isSpecialDeal)
             total = price * 0.95;
-        } else {
+        else
             total = price * 0.98;
-        }
+        
         send();
     }
 
