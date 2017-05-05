@@ -29,9 +29,8 @@ public class ConsolidateConditionalExpression {
 
     // Example 2
     public double getSomeOtherAmount() {
-        if (isOnVacation)
-            if (lengthOfService > 10)
-                return 1;
+        if (isOnVacation && (lengthOfService > 10))
+            return 1;
         return 0.5;
     }
 }
