@@ -8,7 +8,10 @@ public class ConsolidateConditionalExpression {
     private int seniority;
     private int monthsDisable;
     private boolean isPartTime;
+    private boolean isOnVacation;
+    private int lengthOfService;
 
+    // Example 1
     public double getDisabilityAmount() {
         if (isNotEligibleForDisability())
             return 0;
@@ -22,5 +25,13 @@ public class ConsolidateConditionalExpression {
 
     private double ComputeDisabilityAmount() {
         return 0;
+    }
+
+    // Example 2
+    public double getSomeOtherAmount() {
+        if (isOnVacation)
+            if (lengthOfService > 10)
+                return 1;
+        return 0.5;
     }
 }
