@@ -41,12 +41,8 @@ public class ReplaceNestedConditionalWithGuardClauses {
 
     // Example 2
     public double getAdjustedCapital() {
-        if (capital <= 0) {
-            return 0;
-        }
-        if (interestRate <= 0.0 || duration <= 0.0) {
-            return 0;
-        }
+        if (capital <= 0) return 0;
+        if (interestRate <= 0.0 || duration <= 0.0) return 0;
         return (income / duration) * ADJUSTMENT_FACTOR;
     }
 }
