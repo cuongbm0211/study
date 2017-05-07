@@ -21,11 +21,10 @@ public class ReplaceNestedConditionalWithGuardClauses {
         }
 
         if (isRetired) {
-            result = calculateRetiredAmount();
-        } else {
-            result = calculateNormalAmount();
+            return calculateRetiredAmount();
         }
 
+        result = calculateNormalAmount();
         return result;
     }
 
