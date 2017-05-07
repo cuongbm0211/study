@@ -26,22 +26,22 @@ public class RemoveControlFlag {
 
     // Example 2
     public void checkSecurity2(List<String> people) {
-        String foundPerson = "";
+        String foundPerson = getMiscreant(people);
+        someLaterCode(foundPerson);
+    }
 
+    public String getMiscreant(List<String> people) {
         for (String person : people) {
-            if (foundPerson.equalsIgnoreCase("")) {
-                if (person.equalsIgnoreCase("Don")) {
-                    sendMailAlert();
-                    foundPerson = person;
-                }
-                if (person.equalsIgnoreCase("John")) {
-                    sendMailAlert();
-                    foundPerson = person;
-                }
+            if (person.equalsIgnoreCase("Don")) {
+                sendMailAlert();
+                return person;
+            }
+            if (person.equalsIgnoreCase("John")) {
+                sendMailAlert();
+                return person;
             }
         }
-
-        someLaterCode(foundPerson);
+        return "";
     }
 
     private void someLaterCode(String foundPerson) {
