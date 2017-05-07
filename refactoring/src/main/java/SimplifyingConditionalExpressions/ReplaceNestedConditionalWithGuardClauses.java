@@ -11,18 +11,9 @@ public class ReplaceNestedConditionalWithGuardClauses {
 
     // Example 1
     public double getPayAmount() {
-        if (isDead) {
-            return calculateDeadAmount();
-        }
-
-        if (isSeparate) {
-            return calculateSeparateAmount();
-        }
-
-        if (isRetired) {
-            return calculateRetiredAmount();
-        }
-
+        if (isDead) return calculateDeadAmount();
+        if (isSeparate) return calculateSeparateAmount();
+        if (isRetired) return calculateRetiredAmount();
         return calculateNormalAmount();
     }
 
