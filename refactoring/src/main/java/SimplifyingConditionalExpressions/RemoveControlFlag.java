@@ -8,20 +8,18 @@ import java.util.List;
 public class RemoveControlFlag {
 
     public void checkSecurity(List<String> people) {
-        boolean foundPerson = false;
         for (String person : people) {
-            if (!foundPerson) {
-                if (person.equalsIgnoreCase("Don")) {
-                    sendMailAlert();
-                    foundPerson = true;
-                }
-                if (person.equalsIgnoreCase("John")) {
-                    sendMailAlert();
-                    foundPerson = true;
-                }
+            if (person.equalsIgnoreCase("Don")) {
+                sendMailAlert();
+                break;
+            }
+            if (person.equalsIgnoreCase("John")) {
+                sendMailAlert();
+                break;
             }
         }
     }
 
-    private void sendMailAlert() { }
+    private void sendMailAlert() {
+    }
 }
