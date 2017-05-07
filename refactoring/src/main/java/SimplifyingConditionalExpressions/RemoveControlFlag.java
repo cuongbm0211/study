@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class RemoveControlFlag {
 
+    // Example 1
     public void checkSecurity(List<String> people) {
         for (String person : people) {
             if (person.equalsIgnoreCase("Don")) {
@@ -21,5 +22,28 @@ public class RemoveControlFlag {
     }
 
     private void sendMailAlert() {
+    }
+
+    // Example 2
+    public void checkSecurity2(List<String> people) {
+        String foundPerson = "";
+
+        for (String person : people) {
+            if (foundPerson.equalsIgnoreCase("")) {
+                if (person.equalsIgnoreCase("Don")) {
+                    sendMailAlert();
+                    foundPerson = person;
+                }
+                if (person.equalsIgnoreCase("John")) {
+                    sendMailAlert();
+                    foundPerson = person;
+                }
+            }
+        }
+
+        someLaterCode(foundPerson);
+    }
+
+    private void someLaterCode(String foundPerson) {
     }
 }
