@@ -46,9 +46,10 @@ public class ReplaceNestedConditionalWithGuardClauses {
         if (capital <= 0) {
             return result;
         }
-        if (interestRate > 0.0 && duration > 0.0) {
-            result = (income / duration) * ADJUSTMENT_FACTOR;
+        if (interestRate <= 0.0 || duration <= 0.0) {
+            return result;
         }
+        result = (income / duration) * ADJUSTMENT_FACTOR;
         return result;
     }
 }
