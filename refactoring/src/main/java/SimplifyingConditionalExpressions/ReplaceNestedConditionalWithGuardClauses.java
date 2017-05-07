@@ -1,13 +1,20 @@
 package SimplifyingConditionalExpressions;
 
+import com.sun.org.apache.regexp.internal.RE;
+
 /**
  * Created by CuongBM on 5/7/2017.
  */
 public class ReplaceNestedConditionalWithGuardClauses {
 
+    private static final double ADJUSTMENT_FACTOR = 1;
     private boolean isDead;
     private boolean isSeparate;
     private boolean isRetired;
+    private double capital;
+    private double interestRate;
+    private double duration;
+    private double income;
 
     // Example 1
     public double getPayAmount() {
@@ -31,5 +38,17 @@ public class ReplaceNestedConditionalWithGuardClauses {
 
     private double calculateDeadAmount() {
         return 0;
+    }
+
+
+    // Example 2
+    public double getAdjustedCapital() {
+        double result = 0;
+        if (capital > 0.0) {
+            if (interestRate > 0.0 && duration > 0.0) {
+                result = (income / duration) * ADJUSTMENT_FACTOR;
+            }
+        }
+        return result;
     }
 }
