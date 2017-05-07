@@ -11,7 +11,6 @@ public class ReplaceNestedConditionalWithGuardClauses {
 
     // Example 1
     public double getPayAmount() {
-        double result;
         if (isDead) {
             return calculateDeadAmount();
         }
@@ -24,8 +23,7 @@ public class ReplaceNestedConditionalWithGuardClauses {
             return calculateRetiredAmount();
         }
 
-        result = calculateNormalAmount();
-        return result;
+        return calculateNormalAmount();
     }
 
     private double calculateNormalAmount() {
