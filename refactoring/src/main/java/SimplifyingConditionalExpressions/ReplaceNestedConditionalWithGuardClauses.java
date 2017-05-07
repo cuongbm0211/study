@@ -15,17 +15,16 @@ public class ReplaceNestedConditionalWithGuardClauses {
         if (isDead) {
             return calculateDeadAmount();
         }
-        
+
         if (isSeparate) {
-            result = calculateSeparateAmount();
-        } else {
-            if (isRetired) {
-                result = calculateRetiredAmount();
-            } else {
-                result = calculateNormalAmount();
-            }
+            return calculateSeparateAmount();
         }
 
+        if (isRetired) {
+            result = calculateRetiredAmount();
+        } else {
+            result = calculateNormalAmount();
+        }
 
         return result;
     }
