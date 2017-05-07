@@ -1,7 +1,5 @@
 package SimplifyingConditionalExpressions;
 
-import com.sun.org.apache.regexp.internal.RE;
-
 /**
  * Created by CuongBM on 5/7/2017.
  */
@@ -44,10 +42,12 @@ public class ReplaceNestedConditionalWithGuardClauses {
     // Example 2
     public double getAdjustedCapital() {
         double result = 0;
-        if (capital > 0.0) {
-            if (interestRate > 0.0 && duration > 0.0) {
-                result = (income / duration) * ADJUSTMENT_FACTOR;
-            }
+
+        if (capital <= 0) {
+            return result;
+        }
+        if (interestRate > 0.0 && duration > 0.0) {
+            result = (income / duration) * ADJUSTMENT_FACTOR;
         }
         return result;
     }
