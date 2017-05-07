@@ -13,18 +13,19 @@ public class ReplaceNestedConditionalWithGuardClauses {
     public double getPayAmount() {
         double result;
         if (isDead) {
-            result = calculateDeadAmount();
+            return calculateDeadAmount();
+        }
+        
+        if (isSeparate) {
+            result = calculateSeparateAmount();
         } else {
-            if (isSeparate) {
-                result = calculateSeparateAmount();
+            if (isRetired) {
+                result = calculateRetiredAmount();
             } else {
-                if (isRetired) {
-                    result = calculateRetiredAmount();
-                } else {
-                    result = calculateNormalAmount();
-                }
+                result = calculateNormalAmount();
             }
         }
+
 
         return result;
     }
