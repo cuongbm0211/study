@@ -1,0 +1,5 @@
+# IntelliJ
+study-javascript.iml
+
+# Maven ignore
+target/
