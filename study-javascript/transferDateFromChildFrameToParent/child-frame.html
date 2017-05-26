@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>child-frame</title>
+    <script src="../public/js/jquery-3.2.1.js"></script>
+    <script src="../public/js/jquery-ui-1.12.1/jquery-ui.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('button').click(function () {
+                var event = {
+                    name: "cuong",
+                    age: 31
+                };
+
+                var message = JSON.stringify(event)
+                console.log(message);
+
+                parent.postMessage(message, "*");
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <label id="labe-on-iframe">labe-on-iframe</label>
+    <button>Click me</button>
+</body>
+</html>
