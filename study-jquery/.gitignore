@@ -1,0 +1,5 @@
+# IntelliJ
+study-jquery.iml
+
+# Maven ignore
+target/
