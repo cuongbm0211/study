@@ -4,7 +4,12 @@
 
 
 $(document).ready(function () {
-    $('#btnClickMe').click(function () {
-        console.log("Hello CDN");
-    });
+    var btn = $('#btnClickMe');
+
+    // Check Id selector is exist
+    if (btn.length > 0) {
+        btn.click(function () {
+            console.log("Hello CDN");
+        });
+    }
 });
