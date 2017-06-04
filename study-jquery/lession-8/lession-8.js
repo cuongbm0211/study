@@ -18,4 +18,11 @@ $(document).ready(function () {
     $.each($(persons), function (index, element) {
         console.log(element.name);
     });
+
+    // Convert JSON to String and vice versa
+    var stringObject = JSON.stringify(persons);
+    $('#divResult').html(stringObject);
+
+    var jsonObject = JSON.parse(stringObject);
+    console.log(jsonObject);
 });
